@@ -2,43 +2,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script src="ar-controller.js"></script>
-    <style>
-        #ui-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            padding: 10px;
-        }
-        button {
-            margin: 5px;
-            padding: 10px;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.3/dist/mindar-image.prod.js"></script>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.3/dist/mindar-image-aframe.prod.js"></script>
 </head>
 <body>
-    <div id="ui-overlay">
-        <button id="image-tracking-btn">Image Tracking</button>
-        <button id="marker-tracking-btn">Marker Tracking</button>
-        <button id="face-tracking-btn">Face Tracking</button>
-        <button id="location-based-btn">Location Based AR</button>
-    </div>
-
-    <a-scene id="ar-scene" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-        <!-- AR content will be dynamically added here -->
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-plane color="blue" opaciy="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        </a-entity>
     </a-scene>
-
-    <script>
-        const arController = new ARController();
-        
-        document.getElementById('image-tracking-btn').addEventListener('click', () => arController.switchMode('image'));
-        document.getElementById('marker-tracking-btn').addEventListener('click', () => arController.switchMode('marker'));
-        document.getElementById('face-tracking-btn').addEventListener('click', () => arController.switchMode('face'));
-        document.getElementById('location-based-btn').addEventListener('click', () => arController.switchMode('location'));
-    </script>
 </body>
 </html>
