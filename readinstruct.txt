@@ -1,0 +1,8 @@
+View your site:
+Netlify will provide a URL where your site is live. You can view and share this URL.
+Remember, every time you make changes to your project, you'll need to:
+Commit your changes: git add . && git commit -m "Your commit message"
+Push to GitHub: git push
+Netlify will automatically deploy your updates
+This process sets up continuous deployment, so any changes you push to your main branch on GitHub will automatically trigger a new deploy on Netlify.
+For more detailed information on deploying to Netlify, you can refer to the Netlify documentation.
